@@ -86,13 +86,14 @@
         }
 
         /* ======================================================================
-          3. SECCIÓN DE INTEGRANTES (FOTOS EN CAJAS CUADRADAS 1:1)
+          3. SECCIÓN DE INTEGRANTES (GRID DE 4 COLUMNAS FIX)
           ======================================================================
         */
         .musicians-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 0.8rem;
+            gap: 1rem;
+            width: 100%;
         }
 
         .musician-card {
@@ -104,12 +105,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
         }
 
-        /* Contenedor Cuadrado de la Imagen (Ratio 1:1 perfecto) */
+        /* Contenedor Cuadrado de la Imagen (Ratio 1:1) */
         .img-square-container {
             width: 100%;
-            aspect-ratio: 1 / 1; /* Garantiza la forma cuadrada */
+            aspect-ratio: 1 / 1;
             overflow: hidden;
             border-radius: calc(var(--radius) - 2px);
             border: 1px solid var(--border-color);
@@ -120,8 +122,8 @@
         .musician-img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Recorta la foto sin deformar */
-            object-position: center; /* Centra el encuadre */
+            object-fit: cover;
+            object-position: center;
             display: block;
         }
 
@@ -311,7 +313,7 @@
             <p class="tagline">Música de fondo, elegante y sofisticada para el cóctel de tu matrimonio</p>
         </header>
 
-        <!-- SECCIÓN DE MÚSICOS (FOTOS EN CAJAS CUADRADAS) -->
+        <!-- SECCIÓN DE MÚSICOS (FOTOS EN CAJAS CUADRADAS PERFECTAMENTE ALINEADAS) -->
         <section class="musicians-grid">
             <div class="musician-card">
                 <div class="img-square-container">
@@ -333,13 +335,14 @@
                 </div>
                 <h3>Daniel Ardiles</h3>
                 <p>Bajo Eléctrico</p>
+            </div>
             <div class="musician-card">
-    <div class="img-square-container">
-        <img src="Montero 2 - new.jpg" alt="Marcelo Montero" class="musician-img">
-    </div>
-    <h3>Marcelo Montero</h3>
-    <p>Percusión</p>
-</div>
+                <div class="img-square-container">
+                    <img src="Montero 2 - new.jpg" alt="Marcelo Montero" class="musician-img">
+                </div>
+                <h3>Marcelo Montero</h3>
+                <p>Percusión</p>
+            </div>
         </section>
 
         <!-- SECCIÓN DE MEDIA (VIDEOS Y AUDIOS) -->
@@ -351,6 +354,7 @@
                 
                 <!-- Video 1: Mercenarios -->
                 <div class="responsive-iframe-wrapper">
+                    <!-- PASTE YOUTUBE EMBED CODE HERE -->
                     <iframe src="https://www.youtube.com/embed/AirT9niuMkQ?start=17" title="Bulerías Mercenario" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
 
@@ -364,10 +368,13 @@
             <div class="media-block">
                 <h2>Muestras de Audio (SoundCloud)</h2>
 
+                <!-- SoundCloud Track 1: Afro Blue -->
                 <div class="audio-embed-container">
+                    <!-- PASTE SOUNDCLOUD EMBED CODE HERE -->
                     <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/alejandro-castro-tr-o/afro-blue&color=%23d92626&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
                 </div>
 
+                <!-- SoundCloud Track 2: Berimbau -->
                 <div class="audio-embed-container">
                     <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gustavo_lopez_guitarrista/berimbau&color=%23d92626&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
                 </div>
