@@ -7,13 +7,13 @@
     <style>
         /* ======================================================================
           1. CONFIGURACIÓN DE VARIABLES CSS (:root)
-          Modifica los colores, fuentes y espaciados principales aquí.
+          Personaliza los colores, fuentes y medidas globales aquí.
           ======================================================================
         */
         :root {
             --bg-color: #0d0d0d;
             --card-bg: #181818;
-            --accent-color: #d92626; /* Rojo Flamenco */
+            --accent-color: #d92626; /* Rojo Flamenco Accent */
             --accent-hover: #ff3333;
             --text-color: #ffffff;
             --text-muted: #b3b3b3;
@@ -45,7 +45,7 @@
             text-decoration: none;
         }
 
-        /* Contenedor Principal (Zero-Scroll / Layout Compacto) */
+        /* Contenedor Principal */
         .container {
             width: 100%;
             max-width: var(--max-width);
@@ -86,8 +86,7 @@
         }
 
         /* ======================================================================
-          3. SECCIÓN DE INTEGRANTES (MÚSICOS COMPACTO)
-          Horizontal en Desktop (4 col), 2 por fila en Mobile
+          3. SECCIÓN DE INTEGRANTES (FOTOS EN CAJAS CUADRADAS 1:1)
           ======================================================================
         */
         .musicians-grid {
@@ -100,12 +99,30 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: var(--radius);
-            padding: 1rem 0.5rem;
+            padding: 0.8rem;
             text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+        }
+
+        /* Contenedor Cuadrado de la Imagen (Ratio 1:1 perfecto) */
+        .img-square-container {
+            width: 100%;
+            aspect-ratio: 1 / 1; /* Garantiza la forma cuadrada */
+            overflow: hidden;
+            border-radius: calc(var(--radius) - 2px);
+            border: 1px solid var(--border-color);
+            margin-bottom: 0.6rem;
+            background-color: #000;
+        }
+
+        .musician-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Recorta la foto sin deformar */
+            object-position: center; /* Centra el encuadre */
+            display: block;
         }
 
         .musician-card h3 {
@@ -121,7 +138,7 @@
         }
 
         /* ======================================================================
-          4. CONTENEDORES DE MEDIA (AUDIO Y VIDEO EN EMBEDS RESPONSIVOS)
+          4. CONTENEDORES DE MEDIA (AUDIO Y VIDEO)
           ======================================================================
         */
         .media-section {
@@ -147,7 +164,7 @@
             color: var(--text-color);
         }
 
-        /* Wrapper con Aspect Ratio Responsivo para Videos (16:9) */
+        /* Wrapper Responsivo para Videos (Aspect Ratio 16:9) */
         .responsive-iframe-wrapper {
             position: relative;
             width: 100%;
@@ -167,7 +184,7 @@
             border: 0;
         }
 
-        /* Contenedor compacto para reproductores audio de SoundCloud */
+        /* Contenedor compacto para SoundCloud */
         .audio-embed-container {
             width: 100%;
             border-radius: calc(var(--radius) - 2px);
@@ -194,14 +211,14 @@
 
         .repertoire-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1rem;
         }
 
         .repertoire-category h4 {
             color: var(--accent-color);
             font-size: 0.95rem;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.4rem;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 0.2rem;
         }
@@ -213,11 +230,11 @@
         .repertoire-category li {
             font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.3rem;
         }
 
         /* ======================================================================
-          6. CALL TO ACTION (CTA) & LINKS EXTERNO
+          6. CALL TO ACTION & BOTÓN WHATSAPP
           ======================================================================
         */
         .cta-container {
@@ -228,32 +245,24 @@
             margin-top: 0.5rem;
         }
 
-        .btn {
-            background-color: var(--accent-color);
-            color: var(--text-color);
-            padding: 0.8rem 1.5rem;
+        .btn-whatsapp {
+            background-color: #25d366; /* Verde Oficial WhatsApp */
+            color: #ffffff;
+            padding: 0.8rem 1.8rem;
             font-weight: bold;
+            font-size: 1rem;
             border-radius: var(--radius);
             transition: background 0.2s ease;
             text-align: center;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
         }
 
-        .btn:hover {
-            background-color: var(--accent-hover);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            border: 1px solid var(--accent-color);
-            color: var(--text-color);
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(217, 38, 38, 0.1);
+        .btn-whatsapp:hover {
+            background-color: #20ba5a;
         }
 
         /* ======================================================================
@@ -270,7 +279,7 @@
         }
 
         /* ======================================================================
-          8. ADAPTABILIDAD MÓVIL (2 por fila para músicos)
+          8. ADAPTABILIDAD MÓVIL
           ======================================================================
         */
         @media (max-width: 768px) {
@@ -296,48 +305,63 @@
 
     <div class="container">
         
+        <!-- HEADER / HERO -->
         <header class="hero">
             <h1>Cuarteto <span>Flamenco Latin Jazz</span></h1>
             <p class="tagline">Música de fondo, elegante y sofisticada para el cóctel de tu matrimonio</p>
         </header>
 
+        <!-- SECCIÓN DE MÚSICOS (FOTOS EN CAJAS CUADRADAS) -->
         <section class="musicians-grid">
             <div class="musician-card">
+                <div class="img-square-container">
+                    <img src="GL 4.JPEG" alt="Gustavo López" class="musician-img">
+                </div>
                 <h3>Gustavo López</h3>
                 <p>Guitarra Flamenca Fusión</p>
             </div>
             <div class="musician-card">
+                <div class="img-square-container">
+                    <img src="Jano 1.jpg" alt="Alejandro Castro" class="musician-img">
+                </div>
                 <h3>Alejandro Castro</h3>
                 <p>Guitarra Flamenca Fusión Jazz</p>
             </div>
             <div class="musician-card">
+                <div class="img-square-container">
+                    <img src="Ard 1.jpg" alt="Daniel Ardiles" class="musician-img">
+                </div>
                 <h3>Daniel Ardiles</h3>
                 <p>Bajo Eléctrico</p>
             </div>
             <div class="musician-card">
+                <div class="img-square-container">
+                    <img src="Montero 2.jpg" alt="Marcelo Montero" class="musician-img">
+                </div>
                 <h3>Marcelo Montero</h3>
                 <p>Percusión</p>
             </div>
         </section>
 
+        <!-- SECCIÓN DE MEDIA (VIDEOS Y AUDIOS) -->
         <section class="media-section">
             
+            <!-- BLOQUE DE VIDEO (YOUTUBE) -->
             <div class="media-block">
-                <h2>Videos y Audio Instrumental</h2>
+                <h2>Videos en Vivo</h2>
                 
+                <!-- Video 1: Mercenarios -->
+                <div class="responsive-iframe-wrapper">
+                    <iframe src="https://www.youtube.com/embed/AirT9niuMkQ?start=17" title="Bulerías Mercenario" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+
+                <!-- Video 2: Pharaon -->
                 <div class="responsive-iframe-wrapper">
                     <iframe src="https://www.youtube.com/embed/MIUi-0oM0PQ" title="Pharaon (Versión cover)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-
-                <div class="responsive-iframe-wrapper">
-                    <iframe src="https://www.youtube.com/embed/ud7JG5UovVo" title="Video de presentación flamenco jazz" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-
-                <div class="responsive-iframe-wrapper">
-                    <iframe src="https://www.youtube.com/embed/X6i8EhEO5Ks" title="Tema instrumental" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
             </div>
 
+            <!-- BLOQUE DE AUDIO (SOUNDCLOUD) -->
             <div class="media-block">
                 <h2>Muestras de Audio (SoundCloud)</h2>
 
@@ -352,60 +376,55 @@
 
         </section>
 
+        <!-- SECCIÓN DE REPERTORIO -->
         <section class="repertoire-section">
             <h2>Repertorio Propuesto para el Cóctel</h2>
             <div class="repertoire-grid">
                 
                 <div class="repertoire-category">
-                    <h4>Jazz, Flamenco & Fusión</h4>
+                    <h4>Jazz, Flamenco & Fusión, Rumbas</h4>
                     <ul>
                         <li>Afro Blue</li>
-                        <li>Take Five</li>
+                        <li>Bésame Mucho</li>
+                        <li>Entre Dos Aguas (Novios)</li>
+                        <li>Mediterranean Sundance / Rio Ancho (Novios)</li>
+                        <li>Spain (con intro Concierto de Aranjuez)</li>
                         <li>Watermelon Man</li>
-                        <li>Spain + intro Aranjuez</li>
-                        <li>Bésame mucho</li>
+                        <li>Moorea (Similar a pedido novios)</li>
+                        <li>Pharaon (Idem)</li>
                     </ul>
                 </div>
 
                 <div class="repertoire-category">
-                    <h4>Rumbas</h4>
+                    <h4>Flamenco Tradicional y Arreglos</h4>
                     <ul>
-                        <li>Mediterranean Sun Dance</li>
-                        <li>Entre dos aguas</li>
-                        <li>Pharaon (Gipsy Kings)</li>
-                        <li>Moorea (Gipsy Kings)</li>
-                    </ul>
-                </div>
-
-                <div class="repertoire-category">
-                    <h4>Flamenco</h4>
-                    <ul>
+                        <li>Almoraima (Novios)</li>
+                        <li>Tangos flamencos (ensamble) (Similar pedido novios)</li>
                         <li>Bulerías Mercenario</li>
-                        <li>Alegrías (Arreglo a 2 guitarras)</li>
-                        <li>Tanguillos (Arreglo a 2 guitarras)</li>
-                        <li>Bulería Salmorejo (G. López)</li>
                     </ul>
                 </div>
 
                 <div class="repertoire-category">
-                    <h4>Clásico & Solos</h4>
+                    <h4>Clásico & Tradicional</h4>
                     <ul>
                         <li>Juegos Prohibidos / Romanza (Dúo)</li>
-                        <li>Danza del Molinero (Solo)</li>
-                        <li>Capricho Árabe (Solo)</li>
+                        <li>Berimbau</li>
                     </ul>
                 </div>
 
             </div>
         </section>
 
+        <!-- CALL TO ACTION & CONTACTO WHATSAPP -->
         <div class="cta-container">
-            <a href="https://www.youtube.com/watch?v=X6i8EhEO5Ks&list=OLAK5uy_nSEdiEkknyxbMLT9y4h8mBs-MG85-BZUM" target="_blank" class="btn">▶ Escuchar ÁLbum / Playlist en YouTube</a>
-            <a href="mailto:contacto@cuartetoflamencojazz.com" class="btn btn-secondary">✉ Contactar / Confirmar Fecha</a>
+            <a href="http://wa.me/+56962049050" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                💬 Contactar / Confirmar Fecha por WhatsApp
+            </a>
         </div>
 
     </div>
 
+    <!-- FOOTER -->
     <footer>
         <p>© 2026 Cuarteto Flamenco Latin Jazz — Todos los derechos reservados</p>
     </footer>
